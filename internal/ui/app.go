@@ -321,9 +321,9 @@ func (a *App) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		switch msg.String() {
 		case "tab":
 			a.switchFocus()
-		case "ctrl+up":
+		case "g":
 			a.navigateTop()
-		case "ctrl+down":
+		case "G":
 			a.navigateBottom()
 		case "up", "k":
 			a.navigateUp()
@@ -547,9 +547,9 @@ func (a *App) handleChatKey(msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 		return a, tea.Quit
 	case "esc", "tab":
 		a.switchFocus()
-	case "ctrl+up":
+	case "ctrl+u":
 		a.chat.ScrollToTop()
-	case "ctrl+down":
+	case "ctrl+d":
 		a.chat.ScrollToBottom()
 	case "enter":
 		text := a.chat.ClearInput()

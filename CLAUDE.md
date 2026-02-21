@@ -60,7 +60,8 @@ Async components (`player.Player`, `chat.Client`) communicate back to the bubble
 ### Key bindings (implemented in `internal/ui/app.go`)
 
 Navigation keys are handled in `App.Update()`. Non-chat focus (`focusAlbums`, `focusTracks`) and chat focus (`focusChat`) have separate key handlers. Notable shortcuts:
-- `ctrl+up` / `ctrl+down` — jump to top/bottom of Albums or Songs list; scroll to top/bottom of Chat history
+- `g` / `G` — jump to top/bottom of Albums or Songs list (vim-style)
+- `ctrl+u` / `ctrl+d` — scroll Chat history to top/bottom (vim/less-style)
 
 ### Layout
 
