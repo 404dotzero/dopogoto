@@ -700,7 +700,9 @@ func (a *App) renderHelpBar() string {
 		repeatStr = fmt.Sprintf("\x1b[38;5;%sm[\x1b[38;5;%smR\x1b[38;5;%sm] \x1b[38;5;%smREPEAT\x1b[0m", br, ky, br, lb)
 	}
 
+	verStr := fmt.Sprintf("\x1b[38;5;%smv%s\x1b[0m", t.FadeColor, a.version)
 	left := " " + strings.Join([]string{
+		verStr,
 		key("TAB", fmt.Sprintf("\x1b[38;5;%smSWITCH", lb)),
 		key("ENTER", fmt.Sprintf("\x1b[38;5;%smPLAY", lb)),
 		key("SPACE", a.pauseLabel()),
@@ -720,8 +722,7 @@ func (a *App) renderHelpBar() string {
 	}
 	themeKey := fmt.Sprintf("\x1b[38;5;%sm[\x1b[38;5;%smT\x1b[38;5;%sm] \x1b[38;5;%smTHEME", br, ky, br, lb)
 	volKeys := fmt.Sprintf("\x1b[38;5;%sm[\x1b[38;5;%sm-\x1b[38;5;%sm/\x1b[38;5;%sm+\x1b[38;5;%sm]", br, ky, br, ky, br)
-	verStr := fmt.Sprintf("\x1b[38;5;%smv%s", t.FadeColor, a.version)
-	right := fmt.Sprintf("%s %s \x1b[0m%s\x1b[0m  %s\x1b[0m ", themeKey, volKeys, volStr, verStr)
+	right := fmt.Sprintf("%s %s \x1b[0m%s\x1b[0m ", themeKey, volKeys, volStr)
 
 	leftVis := panels.AnsiVisLen(left)
 	rightVis := panels.AnsiVisLen(right)
