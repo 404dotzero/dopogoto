@@ -91,3 +91,4 @@ Always run these locally before pushing. The race test requires `CGO_ENABLED=1`.
 
 - Keep this file up to date whenever the codebase changes.
 - **Bump the version** in `main.go` (`var version = "x.y.z"`) with every commit. Current: `0.1.7`. Upstream latest tag: `v0.1.6`.
+- **Always build** after every change: `go build -o dopogoto .`
