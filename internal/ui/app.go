@@ -720,7 +720,8 @@ func (a *App) renderHelpBar() string {
 	}
 	themeKey := fmt.Sprintf("\x1b[38;5;%sm[\x1b[38;5;%smT\x1b[38;5;%sm] \x1b[38;5;%smTHEME", br, ky, br, lb)
 	volKeys := fmt.Sprintf("\x1b[38;5;%sm[\x1b[38;5;%sm-\x1b[38;5;%sm/\x1b[38;5;%sm+\x1b[38;5;%sm]", br, ky, br, ky, br)
-	right := fmt.Sprintf("%s %s \x1b[0m%s\x1b[0m ", themeKey, volKeys, volStr)
+	verStr := fmt.Sprintf("\x1b[38;5;%smv%s", t.FadeColor, a.version)
+	right := fmt.Sprintf("%s %s \x1b[0m%s\x1b[0m  %s\x1b[0m ", themeKey, volKeys, volStr, verStr)
 
 	leftVis := panels.AnsiVisLen(left)
 	rightVis := panels.AnsiVisLen(right)
