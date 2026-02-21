@@ -321,6 +321,10 @@ func (a *App) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		switch msg.String() {
 		case "tab":
 			a.switchFocus()
+		case "ctrl+up":
+			a.navigateTop()
+		case "ctrl+down":
+			a.navigateBottom()
 		case "up", "k":
 			a.navigateUp()
 		case "down", "j":
@@ -543,6 +547,10 @@ func (a *App) handleChatKey(msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 		return a, tea.Quit
 	case "esc", "tab":
 		a.switchFocus()
+	case "ctrl+up":
+		a.chat.ScrollToTop()
+	case "ctrl+down":
+		a.chat.ScrollToBottom()
 	case "enter":
 		text := a.chat.ClearInput()
 		if text != "" {
@@ -628,6 +636,26 @@ func (a *App) navigateDown() {
 		a.syncTracks()
 	case focusTracks:
 		a.trackList.Down()
+	}
+}
+
+func (a *App) navigateTop() {
+	switch a.focus {
+	case focusAlbums:
+		a.albumList.Top()
+		a.syncTracks()
+	case focusTracks:
+		a.trackList.Top()
+	}
+}
+
+func (a *App) navigateBottom() {
+	switch a.focus {
+	case focusAlbums:
+		a.albumList.Bottom()
+		a.syncTracks()
+	case focusTracks:
+		a.trackList.Bottom()
 	}
 }
 

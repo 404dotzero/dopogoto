@@ -57,6 +57,11 @@ Async components (`player.Player`, `chat.Client`) communicate back to the bubble
 - **`internal/theme`** — HSL↔RGB↔256-color conversion utilities; used for dynamic gradient generation in panels.
 - **`internal/ui/panels`** — individual TUI panel renderers. Each panel is a struct with `Width`/`Height`/`Focused` fields and a `View() string` method. ANSI escape codes are used directly (not lipgloss) for rendering. `render.go` has shared border/title helpers. `theme.go` manages the current theme and `CycleTheme()`.
 
+### Key bindings (implemented in `internal/ui/app.go`)
+
+Navigation keys are handled in `App.Update()`. Non-chat focus (`focusAlbums`, `focusTracks`) and chat focus (`focusChat`) have separate key handlers. Notable shortcuts:
+- `ctrl+up` / `ctrl+down` — jump to top/bottom of Albums or Songs list; scroll to top/bottom of Chat history
+
 ### Layout
 
 `App.View()` produces: `[video | albumList] / [chat | trackList]` side-by-side (left column: `video.FrameWidth()` wide), then controls bar, then help bar. Minimum terminal size is 120×40; if smaller, an animated "too small" video plays.
